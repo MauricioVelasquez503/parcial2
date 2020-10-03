@@ -4,12 +4,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { LoginComponent } from './pages/login/login.component';
+import { VentaformComponent } from './components/ventaform/ventaform.component';
 
 const routes: Routes = [
-  { path: 'home'    , component: HomeComponent },
+  { 
+    path: 'home' , 
+    component: HomeComponent,
+    children:[
+      {path:'venta', component:VentaformComponent},
+      { path: '**', redirectTo: 'venta' }
+    ]
+ },
   { path: 'registro', component: RegistroComponent },
   { path: 'login'   , component: LoginComponent },
-  { path: '**', redirectTo: 'registro' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
