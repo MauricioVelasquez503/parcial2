@@ -16,6 +16,7 @@ import{AngularFireModule} from '@angular/fire'
 import{AngularFireAuthModule} from '@angular/fire/auth'
 import { environment } from 'src/environments/environment';
 import { VentaformComponent } from './components/ventaform/ventaform.component';
+import { ProductosComponent } from './components/productos/productos.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { VentaformComponent } from './components/ventaform/ventaform.component';
     RegistroComponent,
     HomeComponent,
     LoginComponent,
-    VentaformComponent
+    VentaformComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { VentaformComponent } from './components/ventaform/ventaform.component';
+import { ProductosComponent } from './components/productos/productos.component';
 
 const routes: Routes = [
   { 
@@ -12,6 +13,7 @@ const routes: Routes = [
     component: HomeComponent,
     children:[
       {path:'venta', component:VentaformComponent},
+      {path:'producto', component:ProductosComponent},
       { path: '**', redirectTo: 'venta' }
     ]
  },
