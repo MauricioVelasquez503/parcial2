@@ -1,4 +1,4 @@
-<form autocomplete="off" (ngSubmit)="venta( forma )" #forma="ngForm">
+<form autocomplete="off" (ngSubmit)="guardar( forma )" #forma="ngForm">
 
  
     <div class="form-group row">
@@ -6,7 +6,7 @@
       <div class="col-8">
 
         <input class="form-control" type="text" name="codprod" placeholder="codigo de producto"
-          [class.is-invalid]="codprod.invalid && codprod.touched" [ngModel]="usuario.codprod" 
+          [class.is-invalid]="codprod.invalid && codprod.touched" [ngModel]="venta.codprod" 
           #codprod="ngModel">
         <small *ngIf="codprod.invalid && codprod.touched" class="form-text text-danger">Ingrese 5 letras</small>
       </div>
@@ -16,8 +16,8 @@
       <label class="col-2 col-form-label">descripcion Producto</label>
       <div class="col-8">
 
-        <input class="form-control" type="text" name="descProd" placeholder="descProd"
-          [class.is-invalid]="descProd.invalid && descProd.touched" [ngModel]="usuario.descProd" required minlength="5"
+        <input class="form-control" type="text" name="descProd" placeholder="descripcion del Producto"
+          [class.is-invalid]="descProd.invalid && descProd.touched" [ngModel]="venta.descProd" required minlength="5"
           #descProd="ngModel">
         <small *ngIf="descProd.invalid && descProd.touched" class="form-text text-danger">Ingrese 5 letras</small>
       </div>
@@ -28,7 +28,7 @@
       <div class="col-8">
 
         <input class="form-control" type="text" name="precioProd" placeholder="precio"
-          [class.is-invalid]="precioProd.invalid && precioProd.touched" [ngModel]="usuario.precioProd" required
+          [class.is-invalid]="precioProd.invalid && precioProd.touched" [ngModel]="venta.precioProd" required
            #precioProd="ngModel">
         <small *ngIf="precioProd.invalid && precioProd.touched" class="form-text text-danger">Ingrese precio </small>
       </div>
@@ -41,7 +41,7 @@
       <div class="col-8">
 
         <input class="form-control" type="text" name="nameCli" placeholder="nombre cliente"
-          [class.is-invalid]="nameCli.invalid && nameCli.touched" [ngModel]="usuario.nameCli" required minlength="5"
+          [class.is-invalid]="nameCli.invalid && nameCli.touched" [ngModel]="venta.nameCli" required minlength="5"
           #nameCli="ngModel">
         <small *ngIf="nameCli.invalid && nameCli.touched" class="form-text text-danger">Ingrese 5 letras</small>
       </div>
@@ -52,7 +52,7 @@
       <div class="col-8">
 
         <input class="form-control" type="text" name="duiCli" placeholder="Dui Cliente"
-          [class.is-invalid]="duiCli.invalid && duiCli.touched" [ngModel]="usuario.duiCli" required minlength="5"
+          [class.is-invalid]="duiCli.invalid && duiCli.touched" [ngModel]="venta.duiCli" required minlength="5"
           #duiCli="ngModel">
         <small *ngIf="duiCli.invalid && duiCli.touched" class="form-text text-danger">Ingrese 5 letras</small>
       </div>
