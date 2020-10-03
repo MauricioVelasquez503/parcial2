@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 import { VentaService } from 'src/app/services/venta.service';
 import { ActivatedRoute } from '@angular/router';
@@ -37,7 +37,7 @@ export class VentaformComponent implements OnInit {
       return;
     }
 
-   /* 
+   
 
     Swal.fire({
       title: 'Espere',
@@ -46,7 +46,7 @@ export class VentaformComponent implements OnInit {
       allowOutsideClick: false
     });
     Swal.showLoading();
-*/
+
     let peticion: Observable<any>;
 
     if(forma.valid){
@@ -57,11 +57,11 @@ export class VentaformComponent implements OnInit {
     
     peticion.subscribe( resp => {
 
-     /* Swal.fire({
+      Swal.fire({
         title:'seeeeeeeee',
         text: 'Se actualizó correctamente',
         icon: 'success'
-      });*/
+      });
 
       console.log('guardado'+ resp);
       
