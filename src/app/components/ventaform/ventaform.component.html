@@ -12,117 +12,111 @@
           <label class="col-4 col-form-label input100 ">Codigo Producto:</label>
           <div class="col-8 wrap-input100 m-b-16 ">
 
+            <input list="codprods" name="codprod" id="codprod" [ngModel]="venta.codprod" #codprod="ngModel"
+              placeholder="codigo de producto">
+            <datalist id="codprods">
+              <option *ngFor="let item of productos; let i=index" value="{{item.codpro}}">{{item.nombre}}
+              
+            </datalist>
+
+
+            <!-- 
+
             <input class="form-control input100 " type="text" name="codprod" placeholder="codigo de producto"
               [class.is-invalid]="codprod.invalid && codprod.touched" [ngModel]="venta.codprod" #codprod="ngModel">
 
 
             <small *ngIf="codprod.invalid && codprod.touched" class="form-text text-danger">Ingrese 5 letras</small>
+          --></div>
           </div>
-        </div>
-       
-  <div class="form-group row ">
-    <label class="col-4 col-form-label input100">descripcion Producto:</label>
-    <div class="col-8">
 
-      <input class="form-control input100" type="text" name="descProd" placeholder="descProd"
-        [class.is-invalid]="descProd.invalid && descProd.touched" [ngModel]="venta.descProd" required minlength="5"
-        #descProd="ngModel">
-      <small *ngIf="descProd.invalid && descProd.touched" class="form-text text-danger">Ingrese 5 letras</small>
+          <div class="form-group row ">
+            <label class="col-4 col-form-label input100">descripcion Producto:</label>
+            <div class="col-8">
+
+              <input class="form-control input100" type="text" name="descProd" placeholder="descProd"
+                [class.is-invalid]="descProd.invalid && descProd.touched" [ngModel]="venta.descProd" required
+                minlength="5" #descProd="ngModel" >
+              <small *ngIf="descProd.invalid && descProd.touched" class="form-text text-danger">Ingrese 5 letras</small>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-4 col-form-label input100">Precio Producto:</label>
+            <div class="col-8">
+
+              <input class="form-control input100" type="text" name="precioProd" placeholder="precio"
+                [class.is-invalid]="precioProd.invalid && precioProd.touched" [ngModel]="venta.precioProd" required
+                #precioProd="ngModel">
+              <small *ngIf="precioProd.invalid && precioProd.touched" class="form-text text-danger">Ingrese precio
+              </small>
+            </div>
+          </div>
+
+
+
+          <div class="form-group row">
+            <label class="col-4 col-form-label input100">Nombre Cliente:</label>
+            <div class="col-8">
+
+              <input class="form-control input100" type="text" name="nameCli" placeholder="Nombre Cliente"
+                [class.is-invalid]="nameCli.invalid && nameCli.touched" [ngModel]="venta.nameCli" required minlength="5"
+                #nameCli="ngModel">
+              <small *ngIf="nameCli.invalid && nameCli.touched" class="form-text text-danger">Ingrese 5 letras</small>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-4 col-form-label input100">Dui Cliete</label>
+            <div class="col-8">
+
+              <input class="form-control input100" type="text" name="duiCli" placeholder="Dui Cliente"
+                [class.is-invalid]="duiCli.invalid && duiCli.touched" [ngModel]="venta.duiCli" required minlength="5"
+                #duiCli="ngModel">
+              <small *ngIf="duiCli.invalid && duiCli.touched" class="form-text text-danger">Ingrese 5 letras</small>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-4 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+              <button type="submit" class="login100-form-btn">
+                Guardar
+              </button>
+            </div>
+          </div>
+
+      </form>
     </div>
-  </div>
 
- 
-<div class="form-group row">
-  <label class="col-4 col-form-label input100">Precio Producto:</label>
-  <div class="col-8">
+    <div class="col-8 float-right ">
+      <table class="table table-light">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Codigo Producto</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Nombre Cliente</th>
+            <th scope="col">Dui Cliente</th>
 
-    <input class="form-control input100" type="text" name="precioProd" placeholder="precio"
-      [class.is-invalid]="precioProd.invalid && precioProd.touched" [ngModel]="venta.precioProd" required
-      #precioProd="ngModel">
-    <small *ngIf="precioProd.invalid && precioProd.touched" class="form-text text-danger">Ingrese precio
-    </small>
-  </div>
-</div>
-
-
-
-<div class="form-group row">
-  <label class="col-4 col-form-label input100">Nombre Cliente:</label>
-  <div class="col-8">
-
-    <input class="form-control input100" type="text" name="nameCli" placeholder="Nombre Cliente"
-      [class.is-invalid]="nameCli.invalid && nameCli.touched" [ngModel]="venta.nameCli" required minlength="5"
-      #nameCli="ngModel">
-    <small *ngIf="nameCli.invalid && nameCli.touched" class="form-text text-danger">Ingrese 5 letras</small>
-  </div>
-</div>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of ventas; let i=index">
+            <th scope="row">{{i}}</th>
+            <td>{{item.codprod}}</td>
+            <td>{{item.descProd}}</td>
+            <td>{{item.precioProd}}</td>
+            <td>{{item.nameCli}}</td>
+            <td>{{item.duiCli}}</td>
+          </tr>
 
 
-<div class="form-group row">
-  <label class="col-4 col-form-label input100">Dui Cliete</label>
-  <div class="col-8">
 
-    <input class="form-control input100" type="text" name="duiCli" placeholder="Dui Cliente"
-      [class.is-invalid]="duiCli.invalid && duiCli.touched" [ngModel]="venta.duiCli" required minlength="5"
-      #duiCli="ngModel">
-    <small *ngIf="duiCli.invalid && duiCli.touched" class="form-text text-danger">Ingrese 5 letras</small>
-  </div>
-</div>
-
-
-<div class="form-group row">
-  <label class="col-4 col-form-label">&nbsp;</label>
-  <div class="input-group col-md-8">
-    <button type="submit" class="login100-form-btn">
-      Guardar
-    </button>
-  </div>
-</div>
-
-</form>
-</div>
-
-<div class="col-8 float-right ">
-  <table class="table table-light">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-        <th scope="col">Handle</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-
-
-    </tbody>
-  </table>
-</div>
-
-
+        </tbody>
+      </table>
+    </div>

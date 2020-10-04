@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { VentaService } from 'src/app/services/venta.service';
 import { ActivatedRoute } from '@angular/router';
 import { VentaModel } from 'src/app/models/venta.model';
+import { ProductoService } from 'src/app/services/producto.service';
 
 
 
@@ -19,8 +20,12 @@ export class VentaformComponent implements OnInit {
 
   venta:VentaModel = new VentaModel();
 
+  ventas:VentaModel[]=[];
+  cargando=false;
+  productos:any[]=[];
 
-  constructor(private _ventS:VentaService,private route: ActivatedRoute) {
+
+  constructor(private _ventS:VentaService,private _prodS:ProductoService,private route: ActivatedRoute) {
    const id = this.route.snapshot.paramMap.get('id');
 
    }
@@ -28,6 +33,25 @@ export class VentaformComponent implements OnInit {
  
 
   ngOnInit() {
+
+    this.cargando = true;
+    this._ventS.getVentas()
+      .subscribe( resp => {
+        this.ventas = resp;
+        this.cargando = false;
+
+        console.log(this.ventas);
+        
+      });
+
+      this._prodS.getProductos()
+      .subscribe(resp=>{
+        this.productos = resp;
+        this.cargando = false;
+
+        console.log(this.productos);
+
+      })
   }
 
   guardar(forma: NgForm){
