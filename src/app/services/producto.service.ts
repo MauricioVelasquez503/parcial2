@@ -36,6 +36,8 @@ export class ProductoService {
 
   }
 
+
+
   getProductos(){
     return this.http.get(`${ this.api }/productos.json`)
     .pipe(
@@ -43,6 +45,10 @@ export class ProductoService {
       delay(0)
     );
   }
+
+
+  
+
 
   private crearArreglo( prodObj: object ) {
 

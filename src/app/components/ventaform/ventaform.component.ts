@@ -10,6 +10,8 @@ import { ProductoModel } from 'src/app/models/producto.model';
 
 
 
+
+
 @Component({
   selector: 'app-ventaform',
   templateUrl: './ventaform.component.html',
@@ -26,15 +28,44 @@ export class VentaformComponent implements OnInit {
   cargando2=false;
   productos:ProductoModel[]=[];
 
+  
+
+
+  //-----
+  producto:any;
+
+  id='';
 
   constructor(private _ventS:VentaService,private _prodS:ProductoService,private route: ActivatedRoute) {
-   const id = this.route.snapshot.paramMap.get('id');
-
+    
+    
    }
+
+   
+   /*copiarvalues()
+   {
+     var valor1 ;
+     valor1 = document.getElementById('labelnombre').value;
+     
+     document.getElementById('pruebalabel').innerHTML=valor1;
+     
+   }*/
 
  
 
   ngOnInit() {
+
+   
+  
+
+    /*if(this.id!== '')
+    {
+      this._prodS.getProducto(id)
+      .subscribe( (resp:any) =>
+        {
+            this.producto=resp;
+        } )
+    }*/
 
     this.cargando = true;
     this.cargando2 = true;
@@ -57,12 +88,41 @@ export class VentaformComponent implements OnInit {
       })
   }
 
+  imprimitFactura(numero:number)
+  {
+    let codigo: String = this.ventas[numero].codprod;
+    let desc: String = this.ventas[numero]. descProd;
+    let dui: String = this.ventas[numero].duiCli;
+    let nombre: String = this.ventas[numero].nameCli;
+    let precio: String = this.ventas[numero].precioProd.toString();
+    /*this.productos[numero]={codpro,descprod,duicli};*/
+
+    console.log(this.ventas[0]);
+    const doc = new jsPDF();
+    doc.fromHTML('========================FACTURA COMERICAL========================',10,10);
+    doc.fromHTML('codigo:' + codigo,10,20);
+    doc.fromHTML('Descripcion de producto:' + desc,10,30);
+    doc.fromHTML('Dui de comprador:' + dui,10,40);
+    doc.fromHTML('Nombre del Comprador:' + nombre,10,50);
+    doc.fromHTML('Precio a pagar: $' + precio,10,60);
+    doc.fromHTML('=================================================================',10,80);
+    
+
+    doc.save('factura');
+    
+  }
+  
+
+
   guardar(forma: NgForm){
 
-    console.log(forma.value);
+    console.log(forma);
     if(forma.invalid){
       return;
     }
+
+      
+    
 
    
 
@@ -77,6 +137,7 @@ export class VentaformComponent implements OnInit {
     let peticion: Observable<any>;
 
     if(forma.valid){
+      this.id = forma.value.id;
       peticion = this._ventS.nuevaVenta( forma.value );
     }
     
@@ -96,5 +157,8 @@ export class VentaformComponent implements OnInit {
     });
 
   }
+
+
+
 
 }
