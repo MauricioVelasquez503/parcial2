@@ -6,11 +6,13 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { VentaformComponent } from './components/ventaform/ventaform.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { 
     path: 'home' , 
-    component: HomeComponent,
+    component: HomeComponent,/*
+    canActivateChild:[AuthGuard],*/
     children:[
       {path:'venta', component:VentaformComponent},
       {path:'producto', component:ProductosComponent},

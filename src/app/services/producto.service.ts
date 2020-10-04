@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { VentaModel } from '../models/venta.model'
+import { ProductoModel } from '../models/producto.model';
 import { delay, map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,23 @@ export class ProductoService {
   private api = 'https://desafio2-d.firebaseio.com';
 
   constructor(private http: HttpClient) { }
+
+
+
+  nuevoPoducto(producto:ProductoModel){
+    return this.http.post(`${this.api}/productos.json`, producto)
+    .pipe(
+      map((resp:any)=>{
+        producto.id = resp.name;
+        console.log(producto);
+        
+        return producto;
+        
+
+      })
+    )
+
+  }
 
   getProducto( id: string ) {
 
@@ -28,11 +46,12 @@ export class ProductoService {
 
   private crearArreglo( prodObj: object ) {
 
-    const productos:any[] = [];
+    const productos:ProductoModel[] = [];
 
     Object.keys( prodObj ).forEach( key => {
 
-      const prod: any = prodObj[key];
+      const prod: ProductoModel = prodObj[key];
+      
       prod.id = key;
 
       productos.push( prod );
@@ -42,4 +61,9 @@ export class ProductoService {
     return productos;
 
   }
+
+
+
+
+
 }

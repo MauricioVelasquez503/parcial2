@@ -6,6 +6,7 @@ import { VentaService } from 'src/app/services/venta.service';
 import { ActivatedRoute } from '@angular/router';
 import { VentaModel } from 'src/app/models/venta.model';
 import { ProductoService } from 'src/app/services/producto.service';
+import { ProductoModel } from 'src/app/models/producto.model';
 
 
 
@@ -22,7 +23,8 @@ export class VentaformComponent implements OnInit {
 
   ventas:VentaModel[]=[];
   cargando=false;
-  productos:any[]=[];
+  cargando2=false;
+  productos:ProductoModel[]=[];
 
 
   constructor(private _ventS:VentaService,private _prodS:ProductoService,private route: ActivatedRoute) {
@@ -35,6 +37,7 @@ export class VentaformComponent implements OnInit {
   ngOnInit() {
 
     this.cargando = true;
+    this.cargando2 = true;
     this._ventS.getVentas()
       .subscribe( resp => {
         this.ventas = resp;
@@ -47,7 +50,7 @@ export class VentaformComponent implements OnInit {
       this._prodS.getProductos()
       .subscribe(resp=>{
         this.productos = resp;
-        this.cargando = false;
+        this.cargando2 = false;
 
         console.log(this.productos);
 
