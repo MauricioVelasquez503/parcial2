@@ -181,7 +181,10 @@ iframe {
   display: block;
 }
 
-
+.navcolor
+{
+  background-color:  #827ffe;
+}
 
 /*------------------------------------------------------------------
 [ Input ]*/

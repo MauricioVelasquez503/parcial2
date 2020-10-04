@@ -39,7 +39,7 @@
             <label class="col-4 col-form-label input100">descripcion Producto:</label>
             <div class="col-8">
 
-              <input id="pruebalabel" class="form-control input100" type="text" name="descProd" placeholder="descProd"
+              <input id="pruebalabel" class="form-control input100" type="text" name="descProd" placeholder="descripcion de Producto"
                 [class.is-invalid]="descProd.invalid && descProd.touched" [ngModel]="venta.descProd" required
                 minlength="5" #descProd="ngModel" >
               <small *ngIf="descProd.invalid && descProd.touched" class="form-text text-danger">Ingrese 5 letras</small>
@@ -48,7 +48,7 @@
 
 
             <div class="form-group row">
-            <label class="col-4 col-form-label input100">Precio Producto:</label>
+            <label class="col-4 col-form-label input100">Precio Producto: $</label>
             <div class="col-8">
 
               <input class="form-control input100" type="text" name="precioProd" placeholder="precio"
@@ -98,7 +98,7 @@
     </div>
 
     <div class="col-8 float-right ">
-      <table class="table table-light">
+      <table class="table table-light table-responsive">
         <thead>
           <tr>
             <th scope="col">#</th>

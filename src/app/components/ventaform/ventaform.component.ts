@@ -12,6 +12,7 @@ import { ProductoModel } from 'src/app/models/producto.model';
 
 
 
+
 @Component({
   selector: 'app-ventaform',
   templateUrl: './ventaform.component.html',
