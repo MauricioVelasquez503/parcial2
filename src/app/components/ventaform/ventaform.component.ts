@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { VentaModel } from 'src/app/models/venta.model';
 import { ProductoService } from 'src/app/services/producto.service';
 import { ProductoModel } from 'src/app/models/producto.model';
+import jsPDF from 'jspdf';
 
 
 

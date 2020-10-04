@@ -60,12 +60,12 @@ export class ProductosComponent implements OnInit {
     peticion.subscribe( resp => {
 
       Swal.fire({
-        title:'seeeeeeeee',
-        text: 'Se actualizó correctamente',
+        title:'Exito 👌🏻 ',
+        text: 'Se ingreso correctamente',
         icon: 'success'
       });
       //this.router.navigate('producto');
-      this.router.navigateByUrl('producto');
+      //this.router.navigateByUrl('producto');
 
       console.log('guardado'+ resp);
       
