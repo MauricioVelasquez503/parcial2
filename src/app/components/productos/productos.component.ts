@@ -6,6 +6,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -18,10 +19,14 @@ export class ProductosComponent implements OnInit {
   productos:ProductoModel[]=[];
 
   constructor(private _prodS:ProductoService,  private route: ActivatedRoute,
-    private router: Router ) { }
+    private router: Router,  ) { }
 
   ngOnInit() {
     this.cargando = true;
+    this.getProductos();
+  }
+
+  getProductos() {
     this._prodS.getProductos()
     .subscribe(resp=>{
       this.productos = resp;
@@ -73,4 +78,36 @@ export class ProductosComponent implements OnInit {
     });
 
   }
+
+  eliminar(id:string){
+
+    Swal.fire({
+      title: 'Eliminar registro? 🙊 ',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.value) {
+        
+        this._prodS.borrarProducto(id).subscribe( resp => {
+
+     
+          Swal.fire(
+            'Eliminado!',
+            'Su registro se eliminó con éxito.',
+            'success'
+          )
+          this.getProductos();
+        }, error => {
+          //SweetAlert
+        });
+      }
+    })
+
+    
+  }
+
+
 }

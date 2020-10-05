@@ -21,6 +21,8 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     HttpClientModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

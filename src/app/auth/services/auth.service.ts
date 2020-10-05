@@ -44,10 +44,11 @@ export class AuthService {
      // Iniciar sesión con correo electrónico / contraseña
   SignIn(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result) => {
-        this.ngZone.run(() => {
+      this.ngZone.run(() => {
+          localStorage.setItem('user', JSON.stringify(result));
+          this.SetUserData(result.user);
           this.router.navigate(['home/venta']);
         });
-        this.SetUserData(result.user);
       }).catch((error) => {
        // window.alert("Por favor revisar credenciales")
        //  window.alert(error.message);
@@ -63,13 +64,29 @@ export class AuthService {
     SignUp(email, password) {
       return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
         .then((result) => {
+
+          Swal.fire(
+            'Exelente 😍',
+            'Usuario Registrado con exito!',
+            'success'
+          )
+
+
+
           this.router.navigate(['home/venta']);
           /* Llame a la función SendVerificaitonMail () cuando un nuevo usuario firme
           y vuelve la funcion*/
         //  this.SendVerificationMail();
           this.SetUserData(result.user);
         }).catch((error) => {
-          window.alert(error.message)
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...!',
+            text: 'Sucedio algo mal 🤨, vuelve a intentarlo',
+            
+          })
+          
         })
     }
 
@@ -95,6 +112,8 @@ export class AuthService {
   // el correo electrónico está verificado
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log("Data", user);
+    
     return (user !== null) ? true : false;
   }
 
@@ -109,6 +128,7 @@ export class AuthService {
     .then((result) => {
       this.ngZone.run(() => {
         this.SetUserData(result.user);
+        localStorage.setItem('user', JSON.stringify(result.user));
         this.router.navigate(['home/venta']);
         })
     }).catch((error) => {

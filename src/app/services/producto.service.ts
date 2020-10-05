@@ -30,6 +30,12 @@ export class ProductoService {
 
   }
 
+  borrarProducto( id: string ) {
+
+    return this.http.delete(`${ this.api }/productos/${ id }.json`);
+
+  }
+
   getProducto( id: string ) {
 
     return this.http.get(`${ this.api }/productos/${ id }.json`);

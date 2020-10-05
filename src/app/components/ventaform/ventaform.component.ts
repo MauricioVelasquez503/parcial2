@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { VentaModel } from 'src/app/models/venta.model';
 import { ProductoService } from 'src/app/services/producto.service';
 import { ProductoModel } from 'src/app/models/producto.model';
-import jsPDF from 'jspdf';
+ import jsPDF from 'jspdf';
 
 
 
@@ -114,13 +114,13 @@ export class VentaformComponent implements OnInit {
 
     console.log(this.ventas[0]);
     const doc = new jsPDF();
-    doc.fromHTML('========================FACTURA COMERICAL========================',10,10);
-    doc.fromHTML('codigo:' + codigo,10,20);
-    doc.fromHTML('Descripcion de producto:' + desc,10,30);
-    doc.fromHTML('Dui de comprador:' + dui,10,40);
-    doc.fromHTML('Nombre del Comprador:' + nombre,10,50);
-    doc.fromHTML('Precio a pagar: $' + precio,10,60);
-    doc.fromHTML('=================================================================',10,80);
+    doc.text('codigo:' + codigo,10,20);
+    doc.text('Descripcion de producto:' + desc,10,30);
+    doc.text('Dui de comprador:' + dui,10,40);
+    doc.text('Nombre del Comprador:' + nombre,10,50);
+    doc.text('========================FACTURA COMERICAL========================',10,10);
+    doc.text('Precio a pagar: $' + precio,10,60);
+    doc.text('=================================================================',10,80);
     
 
     doc.save('factura');
