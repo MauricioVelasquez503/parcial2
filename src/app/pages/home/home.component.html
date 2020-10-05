@@ -11,22 +11,11 @@
         <a class="nav-link input100" routerLink="producto" href="#">Productos <span class="sr-only">(current)</span></a>
       </li>
 
-      <li class="nav-item" *ngIf="!isLogged">
-        <a class="nav-link input100" routerLink="/login" href="#">Login</a>
-      </li>
-
       
-      <li class="nav-item" *ngIf="!isLogged">
-        <a class="nav-link input100" href="#">Register</a>
-      </li>
+      
 
-      <li class="nav-item">
-        <a class="nav-link input100" >{{user?.email}}</a>
-         
-      </li>
-
-      <li class="nav-item" *ngIf="isLogged">
-        <a class="nav-link input100" routerLink="/login" (click)="onLogout()" href="#">Logout</a>
+      <li class="nav-item" >
+        <a class="nav-link input100" routerLink="/login" (click)="authSvc.SignOut()" href="#">Logout</a>
       </li>
 
     

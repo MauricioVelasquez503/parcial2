@@ -15,26 +15,26 @@ export class HomeComponent implements OnInit {
   public user: any;
   public user$:Observable <any> =  this.authSvc.afAuth.user;
 
-  constructor(private authSvc: AuthService) { }
+  constructor(public authSvc: AuthService) { }
 
   async ngOnInit() {
     
    
 
-    console.log('Navbar');
+   /* console.log('Navbar');
     this.user = await this.authSvc.getCurrentUser();
     if(this.user){
       this.isLogged=true;
       
-    }
+    }*/
     
 
   }
 
-  onLogout()
+ /* onLogout()
   {
-    this.authSvc.logout();
+    this.authSvc.SignOut();
   }
     
-
+*/
 }

@@ -17,41 +17,9 @@ export class LoginComponent implements OnInit {
  })
  
 
-  constructor(private authSvc: AuthService, private router:Router) { }
+  constructor(public authSvc: AuthService, private router:Router) { }
 
   ngOnInit() {
-  }
-
-  async onGoogleLogin()
-  {
-    //al los servicios
-  try{
-    
-    this.authSvc.loginGoogle();
-    await this.router.navigate(['/home']);
-    
-  }
-    catch(error){console.log(error)}
-    
-  }
-
-  async onLogin()
-  {
-    const{email,password}= this.loginForm.value
-    try{
-
-      const user = await this.authSvc.login(email,password);
-      if(user)
-      {
-        //redirecciona al home
-        this.router.navigate(['/home']);
-      }
-    }
-    catch(error)
-    {
-    console.log(console.error());
-    }
-    this.authSvc.login(email,password);
   }
 
 }

@@ -1,31 +1,41 @@
 <div class="limiter animated fadeInLeft ">
     <div class="container-login100 ">
         <div class="wrap-login100 p-t-50 p-b-90 ">
-            <form [formGroup]="loginForm" (ngSubmit)="onLogin()"   class="login100-form validate-form flex-sb flex-w">
+
+                                            <!--(ngSubmit)="onLogin()"-->
+            <form [formGroup]="loginForm"                                class="login100-form validate-form flex-sb flex-w">
 
                 <span class="login100-form-title p-b-51">
                     Login
-                </span>
+                </span> 
 
                 <!-- <span class="text-danger">El correo es obligatorio</span> -->
-                <div class="wrap-input100 m-b-16">
+               <div class="wrap-input100 m-b-16">
                     <input class="input100" 
-                           type="text" 
+                           type="email" 
+                           id="username"
                            name="username" 
                            placeholder="Username"
-                           formControlName="email">
+                           formControlName="email"
+                           #userName
+                           required>
 
                     <span class="focus-input100"></span>
                 </div>
                 
                 <!-- <span class="text-danger">La contraseña debe de ser más de 6 letras</span> -->
-                <div class="wrap-input100 m-b-16" data-validate = "Password is required">
+               <div class="wrap-input100 m-b-16" data-validate = "Password is required">
                     <input class="input100"
-                           type="password" 
+                           type="password"
+                           id="userPassword" 
                            name="pass" 
                            placeholder="Password"
-                           formControlName="password">
-                    <span class="focus-input100"></span>
+                           formControlName="password"
+                           #userPassword
+                           required
+                           >
+                  
+                       
                 </div>
                 
                 <div class="flex-sb-m w-full p-t-3 p-b-24">
@@ -44,14 +54,17 @@
                 </div>
 
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn" type="submit">
+                    <button class="login100-form-btn"
+                             type="submit"
+                             (click)="authSvc.SignIn(userName.value, userPassword.value)"
+                             >
                         Ingresar
                     </button>
                 </div>
 
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn" (click)="onGoogleLogin()" type="submit">
-                       Ingresar con Google
+                    <button class="login100-form-btn" (click)="authSvc.GoogleAuth()" type="submit">
+                        <img  src="https://img.icons8.com/bubbles/50/000000/google-logo.png"/>  Ingresar con Google
                     </button>
                 </div>
 
@@ -59,4 +72,6 @@
         </div>
     </div>
 </div>
+
+
 

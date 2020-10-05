@@ -18,6 +18,9 @@ import { environment } from 'src/environments/environment';
 import { VentaformComponent } from './components/ventaform/ventaform.component';
 import { ProductosComponent } from './components/productos/productos.component';
 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,8 @@ import { ProductosComponent } from './components/productos/productos.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

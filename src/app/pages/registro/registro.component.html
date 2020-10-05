@@ -13,7 +13,8 @@
                                type="text" 
                                name="email" 
                                placeholder="Email"
-                               formControlName="email">
+                               formControlName="email"
+                               #userEmail required>
     
                         <span class="focus-input100"></span>
                     </div>
@@ -35,7 +36,8 @@
                                type="password" 
                                name="pass" 
                                placeholder="Password"
-                               formControlName="password">
+                               formControlName="password"
+                               #userPwd required>
                         <span class="focus-input100"></span>
                     </div>
                     
@@ -55,7 +57,9 @@
                     </div>
     
                     <div class="container-login100-form-btn m-t-17">
-                        <button class="login100-form-btn" type="submit">
+                        <button class="login100-form-btn"
+                        (click)="authSvc.SignUp(userEmail.value, userPwd.value)" 
+                        type="submit">
                             Crear cuenta
                         </button>
                     </div>

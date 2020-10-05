@@ -22,10 +22,10 @@ export class RegistroComponent implements OnInit {
 
   })
 
-  constructor(private authSvc:AuthService, private router:Router) { }
+  constructor(public authSvc:AuthService, private router:Router) { }
 
   ngOnInit() { }
-
+/*
  async onRegister()
   {
     const {email,password} = this.registerForm.value
@@ -42,6 +42,6 @@ export class RegistroComponent implements OnInit {
     
    }
   }
-
+*/
 
 }
