@@ -12,9 +12,10 @@
           <label class="col-4 col-form-label input100 ">Codigo Producto:</label>
           <div class="col-8 wrap-input100 m-b-16 ">
 
-            <input class="form-control input100" list="codprods" name="codprod" id="codprod" [ngModel]="venta.codprod" #codprod="ngModel"
+            <input  (ngModelChange)="setdatos($event)" class="form-control input100" list="codprods" name="codprod" id="codprod" [ngModel]="venta.codprod" #codprod="ngModel"
               placeholder="codigo de producto">
             <datalist id="codprods">
+
               <option funcion="copiarvalues()" *ngFor="let item of productos; let i=index" value="{{item.codpro}}">
                <label  id="labelnombre"> {{item.nombre}}</label>,
               <label id="labeldescrip" > {{item.descrip}} </label>,
@@ -41,7 +42,7 @@
 
               <input id="pruebalabel" class="form-control input100" type="text" name="descProd" placeholder="descripcion de Producto"
                 [class.is-invalid]="descProd.invalid && descProd.touched" [ngModel]="venta.descProd" required
-                minlength="5" #descProd="ngModel" >
+                minlength="5" #descProd="ngModel" disabled>
               <small *ngIf="descProd.invalid && descProd.touched" class="form-text text-danger">Ingrese 5 letras</small>
             </div>
           </div>
@@ -51,7 +52,7 @@
             <label class="col-4 col-form-label input100">Precio Producto: $</label>
             <div class="col-8">
 
-              <input class="form-control input100" type="text" name="precioProd" placeholder="precio"
+              <input class="form-control input100" type="text" name="precioProd" placeholder="precio" disabled
                 [class.is-invalid]="precioProd.invalid && precioProd.touched" [ngModel]="venta.precioProd" required
                 #precioProd="ngModel">
               <small *ngIf="precioProd.invalid && precioProd.touched" class="form-text text-danger">Ingrese precio

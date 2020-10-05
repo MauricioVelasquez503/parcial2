@@ -107,11 +107,10 @@ export class AuthService {
   AuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
     .then((result) => {
-       this.ngZone.run(() => {
-         
-          this.router.navigate(['venta']);
+      this.ngZone.run(() => {
+        this.SetUserData(result.user);
+        this.router.navigate(['home/venta']);
         })
-      this.SetUserData(result.user);
     }).catch((error) => {
       window.alert(error)
     })

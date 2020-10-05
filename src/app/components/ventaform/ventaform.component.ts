@@ -43,6 +43,19 @@ export class VentaformComponent implements OnInit {
     
    }
 
+
+   setdatos(idProducto)
+   {
+      let producto = this.productos.find( element => element.codpro === idProducto)
+
+      if( producto ) {
+        this.venta.descProd = producto.descrip;
+        this.venta.precioProd = producto.precio;
+      } else {
+        this.venta.descProd = "";
+        this.venta.precioProd = 0.00;
+      }
+   }
    
    /*copiarvalues()
    {
