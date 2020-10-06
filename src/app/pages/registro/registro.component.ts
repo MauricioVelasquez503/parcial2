@@ -25,23 +25,6 @@ export class RegistroComponent implements OnInit {
   constructor(public authSvc:AuthService, private router:Router) { }
 
   ngOnInit() { }
-/*
- async onRegister()
-  {
-    const {email,password} = this.registerForm.value
-    try{
-      const user = await this.authSvc.register(email,password);
 
-      if(user)
-      {
-        //redirect
-        this.router.navigate(['/home']);
-      }
-    }
-    catch(error){console.log(error);
-    
-   }
-  }
-*/
 
 }

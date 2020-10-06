@@ -20,11 +20,9 @@ export class VentaService {
     .pipe(
       map((resp:any)=>{
         venta.id = resp.name;
-        console.log(venta);
-        
+      
         return venta;
         
-
       })
     )
     

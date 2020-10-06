@@ -24,16 +24,7 @@
 
               
             </datalist>
-            
-
-            <!-- 
-
-            <input class="form-control input100 " type="text" name="codprod" placeholder="codigo de producto"
-              [class.is-invalid]="codprod.invalid && codprod.touched" [ngModel]="venta.codprod" #codprod="ngModel">
-
-
-            <small *ngIf="codprod.invalid && codprod.touched" class="form-text text-danger">Ingrese 5 letras</small>
-          --></div>
+            </div>
           </div>
 
             <div class="form-group row ">
@@ -41,8 +32,8 @@
             <div class="col-8">
 
               <input id="pruebalabel" class="form-control input100" type="text" name="descProd" placeholder="descripcion de Producto"
-                [class.is-invalid]="descProd.invalid && descProd.touched" [ngModel]="venta.descProd" required
-                minlength="5" #descProd="ngModel" disabled>
+                [class.is-invalid]="descProd.invalid && descProd.touched" [ngModel]="venta.descProd" 
+                minlength="5" #descProd="ngModel" >
               <small *ngIf="descProd.invalid && descProd.touched" class="form-text text-danger">Ingrese 5 letras</small>
             </div>
           </div>
@@ -52,8 +43,8 @@
             <label class="col-4 col-form-label input100">Precio Producto: $</label>
             <div class="col-8">
 
-              <input class="form-control input100" type="text" name="precioProd" placeholder="precio" disabled
-                [class.is-invalid]="precioProd.invalid && precioProd.touched" [ngModel]="venta.precioProd" required
+              <input class="form-control input100" type="text" name="precioProd" placeholder="precio" 
+                [class.is-invalid]="precioProd.invalid && precioProd.touched" [ngModel]="venta.precioProd" 
                 #precioProd="ngModel">
               <small *ngIf="precioProd.invalid && precioProd.touched" class="form-text text-danger">Ingrese precio
               </small>
@@ -118,7 +109,7 @@
         </thead>
         <tbody>
           <tr class="table-light" *ngFor="let item of ventas; let i=index">
-            <th scope="row">{{i}}</th>
+            <th scope="row">{{i+1}}</th>
             <td>{{item.codprod}}</td>
             <td>{{item.descProd}}</td>
             <td>{{item.precioProd}}</td>
